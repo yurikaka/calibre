@@ -201,12 +201,6 @@ class UrlSchemeHandler(QWebEngineUrlSchemeHandler):
 # }}}
 
 
-def get_session_pref(name, default=None, group='standalone_misc_settings'):
-    sd = vprefs['session_data']
-    g = sd.get(group, {}) if group else sd
-    return g.get(name, default)
-
-
 def create_profile():
     ans = getattr(create_profile, 'ans', None)
     if ans is None:
