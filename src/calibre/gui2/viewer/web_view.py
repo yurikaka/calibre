@@ -282,6 +282,7 @@ class ViewerBridge(Bridge):
     trigger_shortcut = to_js()
     set_system_palette = to_js()
     highlight_action = to_js()
+    generic_action = to_js()
     show_search_result = to_js()
     prepare_for_close = to_js()
     viewer_font_size_changed = to_js()
@@ -688,6 +689,9 @@ class WebView(RestartingWebEngineView):
     def highlight_action(self, uuid, which):
         self.execute_when_ready('highlight_action', uuid, which)
         self.setFocus(Qt.OtherFocusReason)
+
+    def generic_action(self, which, data):
+        self.execute_when_ready('generic_action', which, data)
 
     def contextMenuEvent(self, ev):
         ev.accept()
